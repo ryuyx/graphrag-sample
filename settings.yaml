@@ -15,7 +15,7 @@ models:
     # api_version: 2024-05-01-preview
     model_supports_json: true # recommended if this is available for your model.
     concurrent_requests: 25
-    async_mode: threaded # or asyncio
+    async_mode: asyncio # threaded or asyncio
     retry_strategy: exponential_backoff
     max_retries: 10
     tokens_per_minute: null
@@ -29,7 +29,7 @@ models:
     api_base: http://10.191.46.2:3000/v1
     # api_version: 2024-05-01-preview
     concurrent_requests: 25
-    async_mode: threaded # or asyncio
+    async_mode: asyncio # threaded or asyncio
     retry_strategy: exponential_backoff
     max_retries: 10
     tokens_per_minute: null
