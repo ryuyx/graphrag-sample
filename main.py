@@ -18,6 +18,7 @@ from graphrag.utils.api import create_storage_from_config
 from graphrag.callbacks.noop_workflow_callbacks import NoopWorkflowCallbacks
 from graphrag.logger.progress import Progress
 
+
 class PrintProgressCallbacks(NoopWorkflowCallbacks):
     def progress(self, progress: Progress):
         if progress.total_items:
@@ -31,6 +32,7 @@ class PrintProgressCallbacks(NoopWorkflowCallbacks):
 
     def workflow_end(self, name: str, instance: object):
         print(f"Completed workflow: {name}")
+
 
 async def main():
     # Load environment variables
@@ -51,8 +53,8 @@ async def main():
     config = load_config(root_dir)
 
     # 1. Indexing
-    print("\n--- Step 1: Indexing Data ---")
     # Indexing creates the knowledge graph from input/
+    print("\n--- Step 1: Indexing Data ---")
     await build_index(config=config, verbose=True, callbacks=[PrintProgressCallbacks()])
 
     # Load tables for search
@@ -108,7 +110,7 @@ async def main():
             )
         elif search_type == '3':
             print(f"\nRunning Drift Search for: {user_input}")
-            response, context = await drift_search (
+            response, context = await drift_search(
                 config=config,
                 entities=entities,
                 communities=communities,
@@ -140,6 +142,7 @@ async def main():
             )
         
         print(f"\nResponse:\n{response}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

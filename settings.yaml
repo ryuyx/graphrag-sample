@@ -44,8 +44,8 @@ input:
   file_type: text # [csv, text, json]
 
 chunks:
-  size: 1200
-  overlap: 100
+  size: 3000
+  overlap: 300
   group_by_columns: [id]
 
 ### Output/storage settings ###
